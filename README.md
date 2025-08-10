@@ -1,152 +1,265 @@
-# GreenCart Frontend README
+# 🌱 GreenCart
 
-## Overview
+**Plateforme éco-responsable de vente directe producteur-consommateur (Frontend)**
 
-GreenCart is an eco-responsible e-commerce platform designed to connect local producers with engaged consumers, promoting short circuits and reducing food waste. The frontend is built using React.js with Tailwind CSS, ensuring a responsive, accessible, and sober digital experience. This README provides detailed instructions on setting up, developing, and deploying the frontend application.
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.0-646CFF?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
-The project aligns with principles of digital sobriety (optimized images, minimal JS/CSS), accessibility (WCAG AA compliance), and modern UI/UX for consumers, producers, and administrators.
+> Favoriser le circuit court et lutter contre le gaspillage alimentaire grâce à une plateforme frontend moderne, sobre et accessible.
 
-Key features:
-- User authentication and personalized dashboards.
-- Product catalog with filters (category, region, DLC, price).
-- Shopping cart, order history, and payment integration.
-- AI-driven insights for producers (sales forecasts, client clustering).
-- Admin dashboard for key metrics.
+## 📋 Table des matières
 
-## Prerequisites
+- [🎯 À propos](#à-propos)
+- [✨ Fonctionnalités](#fonctionnalités)
+- [🛠️ Technologies](#technologies)
+- [🚀 Installation](#installation)
+- [📖 Utilisation](#utilisation)
+- [📁 Structure du projet](#structure-du-projet)
+- [🤝 Contribuer](#contribuer)
+- [📄 Licence](#licence)
 
-Before starting, ensure you have the following installed:
-- Node.js (version 18 or higher recommended).
-- npm or Yarn as package manager.
-- Git for version control.
+## 🎯 À propos
 
-## Installation
+GreenCart est une plateforme web frontend développée en React avec JavaScript, visant à connecter directement les producteurs locaux aux consommateurs. Ce projet se concentre exclusivement sur l'interface utilisateur, avec une expérience moderne et éco-responsable. Nos objectifs sont :
 
-1. **Clone the Repository**:
-    - Run `git clone https://github.com/your-repo/greencart-frontend.git` (replace with actual repo URL).
-    - Navigate to the project directory: `cd greencart-frontend`.
+- **Réduire le gaspillage alimentaire** en valorisant les produits à DLC courte
+- **Soutenir l'économie locale** en favorisant les circuits courts
+- **Promouvoir une consommation responsable** avec transparence sur l'origine des produits
+- **Offrir une expérience utilisateur optimale** avec un design sobre et accessible
 
-2. **Install Dependencies**:
-    - Use `npm install` or `yarn install` to fetch all required packages, including React.js, Tailwind CSS, and any additional libraries (e.g., React Router for navigation, Axios for API calls).
+> **Note** : Ce projet couvre uniquement le frontend. La partie backend (authentification, gestion des données, paiements, etc.) est prévue mais non implémentée.
 
-3. **Configure Environment Variables**:
-    - Create a `.env` file in the root directory.
-    - Add the necessary variables, such as:
-      ```
-      REACT_APP_API_URL=http://localhost:5000/api  # Back-end API endpoint
-      REACT_APP_STRIPE_PUBLIC_KEY=pk_test_...     # Stripe integration key
-      REACT_APP_GOOGLE_ANALYTICS_ID=UA-...       # For analytics tracking
-      ```
-    - Ensure sensitive keys are not committed to version control (use `.gitignore`).
+## ✨ Fonctionnalités
 
-4. **Set Up Tailwind CSS**:
-    - Tailwind is pre-configured in `tailwind.config.js`.
-    - Customize themes (e.g., colors: green-soft `#A8DADC`, beige `#E9EDC9`, light-brown `#D4A373`, white `#FFFFFF`) as per the project charter.
+### 👥 Pour les consommateurs
+- 🛒 **Catalogue intelligent** : Filtres par catégorie, région, prix et DLC
+- 🛍️ **Panier persistant** : Gestion des quantités et persistance entre sessions
+- 📱 **Interface responsive** : Optimisée pour mobile et desktop
+- 🌍 **Traçabilité des produits** : Informations sur les produits et producteurs
+- ⭐ **Système d'évaluation** : Avis et notes des clients
+- 📊 **Tableau de bord personnel** : Historique des commandes et impact écologique
 
-## Development
+> **Note** : Les fonctionnalités liées au backend (comme les dashboards producteur et admin) ne sont pas incluses dans ce projet frontend.
 
-1. **Start the Development Server**:
-    - Run `npm start` or `yarn start`.
-    - The app will be available at `http://localhost:3000`.
-    - Hot reloading is enabled for efficient development.
+## 🛠️ Technologies
 
-2. **Project Structure**:
-    - `src/`:
-        - `components/`: Reusable UI elements (e.g., ProductCard, FilterBar, DashboardChart).
-        - `pages/`: Main views (e.g., Home, Catalog, UserDashboard, ProducerDashboard, AdminDashboard).
-        - `services/`: API utilities (e.g., authService.js for JWT handling, productService.js for catalog fetching).
-        - `assets/`: Optimized images and icons (use lazy loading via React's `Suspense` or libraries like `react-lazy-load-image-component`).
-        - `styles/`: Tailwind configurations and global CSS.
-        - `App.js`: Root component with routing (using React Router v6).
-        - `index.js`: Entry point.
-    - `public/`: Static files, including index.html and favicon.
+### Frontend
+- **[React 18](https://reactjs.org/)** : Bibliothèque JavaScript pour interfaces utilisateur
+- **[Vite 5.0](https://vitejs.dev/)** : Outil de build rapide et moderne
+- **[Tailwind CSS 3.4](https://tailwindcss.com/)** : Framework CSS utilitaire (intégré via Vite)
+- **[shadcn/ui](https://ui.shadcn.com/)** : Composants UI modernes et accessibles
+- **[Lucide React](https://lucide.dev/)** : Icônes SVG optimisées
+- **[Recharts](https://recharts.org/)** : Graphiques et visualisations de données
 
-3. **Key Development Guidelines**:
-    - **Responsiveness**: Use Tailwind's responsive utilities (e.g., `md:`, `lg:`) to ensure compatibility across mobile, tablet, and desktop.
-    - **Accessibility (WCAG AA)**: Implement ARIA attributes, keyboard navigation (e.g., via `react-aria`), and sufficient color contrast (test with tools like WAVE or Lighthouse).
-    - **Digital Sobriety**: Minimize bundle size (use code splitting with `React.lazy`), optimize images (compress via tools like ImageOptim), and limit third-party scripts.
-    - **State Management**: Use React Context or Redux for global state (e.g., user auth, cart items).
-    - **API Integration**: Connect to back-end API (REST/GraphQL) for data fetching. Example using Axios:
-      ```jsx
-      import axios from 'axios';
- 
-      const fetchProducts = async () => {
-        try {
-          const response = await axios.get(`${process.env.REACT_APP_API_URL}/products`);
-          return response.data;
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        }
-      };
-      ```
-    - **Authentication**: Implement JWT-based auth with protected routes (using `react-router-dom` guards).
+### Outils de développement
+- **[ESLint](https://eslint.org/)** : Linting pour JavaScript
+- **[Prettier](https://prettier.io/)** : Formatage de code automatisé
+- **[Husky](https://typicode.github.io/husky/)** : Git hooks pour automatisation
+- **[Commitizen](https://commitizen.github.io/cz-cli/)** : Commits conventionnels
 
-4. **Feature Breakdown**:
-    - **Consumer Features**:
-        - Account creation/login.
-        - Filtered catalog (implement with React hooks like `useState` for filters).
-        - Product details, cart management (localStorage or Redux persist).
-        - Dashboard: Display carbon footprint and savings using charts (e.g., Chart.js or Recharts).
-    - **Producer Features**:
-        - Product management (CRUD operations via API).
-        - AI Dashboard: Integrate sales predictions and clustering visuals (fetch data from back-end IA modules).
-    - **Admin Features**:
-        - Metrics dashboard: Use libraries like Recharts for visualizations of sales, unsold items, and geographic zones.
+## 🚀 Installation
 
-## Testing
+### Prérequis
+- **Node.js 18+** : [Télécharger Node.js](https://nodejs.org/)
+- **npm** ou **yarn** : Gestionnaire de paquets (npm est inclus avec Node.js)
+- **Git** : Pour cloner le repository
 
-1. **Unit and Integration Tests**:
-    - Use Jest and React Testing Library: `npm test` or `yarn test`.
-    - Cover components, hooks, and API interactions. Example test:
-      ```jsx
-      import { render, screen } from '@testing-library/react';
-      import ProductCard from './components/ProductCard';
- 
-      test('renders product name', () => {
-        render(<ProductCard name="Apple" price={1.5} />);
-        expect(screen.getByText(/Apple/i)).toBeInTheDocument();
-      });
-      ```
+### Étapes d'installation
 
-2. **Accessibility Tests**:
-    - Run automated audits with `react-axe` or Lighthouse in Chrome DevTools.
-    - Manual tests: Keyboard navigation, screen reader compatibility (e.g., VoiceOver or NVDA).
+1. **Cloner le repository**
+   ```bash
+   git clone https://github.com/dj2025-hub/green-cart.git
+   cd green-cart
+   ```
 
-3. **Performance Tests**:
-    - Use React DevTools Profiler to identify bottlenecks.
-    - Ensure page load < 3s, with lazy loading for images and components.
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
 
-## Deployment
+3. **Configurer Tailwind CSS avec Vite**
+   Tailwind CSS est intégré via Vite sans `tailwind.config.js` ni PostCSS. Vérifiez les fichiers suivants :
+   - **`src/index.css`** : Contient les directives Tailwind :
+     ```css
+     @import 'tailwindcss';
+     ```
+   - **`vite.config.js`** : Inclut le plugin Tailwind pour Vite :
+     ```javascript
+     import { defineConfig } from 'vite';
+     import react from '@vitejs/plugin-react';
+     import tailwindcss from '@tailwindcss/vite';
 
-1. **Build the Application**:
-    - Run `npm run build` or `yarn build` to create an optimized production build in the `build/` folder.
+     export default defineConfig({
+       plugins: [react(), tailwindcss()],
+     });
+     ```
 
-2. **Hosting Options**:
-    - Deploy to eco-friendly providers like OVHcloud or Scaleway (configure HTTPS via Let's Encrypt).
-    - Use Netlify, Vercel, or AWS for CI/CD: Connect Git repo for automatic builds.
-    - Example Netlify deployment: Drag `build/` folder or link repo.
+4. **Lancer le serveur de développement**
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
 
-3. **Environment Configuration **:
-    - Set production env vars on the hosting platform.
-    - Enable security: HTTPS enforcement, CORS for API.
+5. **Ouvrir l'application**
+   Accédez à [http://localhost:5173](http://localhost:5173) (port par défaut de Vite).
 
-## Contributing
+### Scripts disponibles
+```bash
+npm run dev          # Lance le serveur de développement
+npm run build        # Génère le build de production
+npm run preview      # Prévisualise le build de production
+npm run lint         # Vérifie le code avec ESLint
+npm run lint:fix     # Corrige automatiquement les erreurs ESLint
+```
 
-1. **Guidelines**:
-    - Follow Agile sprints: Use Trello/Notion for task management.
-    - Code style: ESLint with Prettier (run `npm run lint`).
-    - Commit conventions: Use semantic commits (e.g., "feat: add cart functionality").
+## 📖 Utilisation
 
-2. **Pull Requests**:
-    - Fork the repo, create a branch (`git checkout -b feature/new-feature`).
-    - Submit PR with detailed description and tests.
+### Navigation principale
+- **Accueil** (`/`) : Page de présentation du projet
+- **Catalogue** (`/catalogue`) : Liste des produits avec filtres
+- **Produit** (`/product/:id`) : Détails d’un produit spécifique
+- **Mon compte** (`/account`) : Gestion du profil et connexion
 
-## License
+### Fonctionnalités clés
 
-This project is licensed under the MIT License. See `LICENSE` file for details.
+#### Catalogue de produits
+- Filtres par catégorie, région, prix et DLC
+- Tri par pertinence, prix, note ou proximité de la DLC
+- Recherche textuelle avancée
+- Affichage en grille ou liste
 
-## Contact
+#### Gestion du panier
+- Ajout/suppression de produits
+- Modification des quantités
+- Calcul automatique du total
+- Persistance via `context/cart.js`
+- Estimation de l’impact écologique
 
-For questions, contact the project lead: Lucie (founder) at [email protected].
+## 📁 Structure du projet
 
-This README is part of the GreenCart MVP documentation. For full project specs, refer to the "Cahier des charges complet – Projet GreenCart.pdf".
+```
+green-cart/
+   ├── public/  
+   ├── src/                        # Code source
+       ├── app/                         # Pages React.js (App Router)
+       │   ├── (marketing)/             # Routes marketing
+       │   ├── admin/                   # Dashboard administrateur
+       │   │   ├── dashboard/           # Pages admin
+       │   ├── catalogue/               # Catalogue produits
+       │   │   └── page.jsx             # Page catalogue
+       │   ├── compte/                  # Gestion compte utilisateur
+       │   │   └── page.jsx             # Page connexion
+       │   ├── produit/                 # Pages produit
+       │   │   └── [id]/                # Produit dynamique
+       │   │       └── page.jsx         # Détails produit
+       │   ├── producteur/              # Dashboard producteur
+       │   │   ├── dashboard/           # Pages producteur
+       │   └── page.jsx                 # Page d'accueil
+   │   ├── assets/                # Assets locaux
+   │   │   ├── images/            # Images
+   │   │   └── icons/             # Icônes
+   │   ├── components/            # Composants réutilisables
+   │   │   ├── ui/               # Composants shadcn/ui
+   │   │   │   ├── button.jsx    # Composant bouton
+   │   │   │   ├── card.jsx      # Composant carte
+   │   │   │   ├── input.jsx     # Composant input
+   │   │   │   └── ...           # Autres composants UI
+   │   │   ├── app-sidebar.jsx   # Sidebar de navigation
+   │   │   ├── cart-drawer.jsx   # Drawer du panier
+   │   │   ├── theme-provider.jsx # Provider pour le thème
+   │   │   └── topbar.jsx        # Barre de navigation
+   │   ├── context/               # Contextes React
+   │   │   └── cart.js           # Contexte pour le panier
+   │   ├── data/                 # Données mock
+   │   │   └── products.js       # Produits d’exemple
+   │   ├── App.jsx               # Composant racine
+   │   ├── App.css               # Styles spécifiques à App
+   │   ├── main.jsx              # Point d’entrée React
+   │   └── index.css             # Styles globaux (incluant Tailwind)
+   ├── .gitignore                # Fichiers ignorés par Git
+   ├── eslint.config.js          # Configuration ESLint
+   ├── index.html                # Fichier HTML principal
+   ├── package.json              # Dépendances et scripts
+   ├── vite.config.js            # Configuration Vite
+   └── README.md                 # Documentation
+```
+
+## 🤝 Contribuer
+
+Les contributions sont les bienvenues ! Voici comment participer :
+
+### 🐛 Signaler des bugs
+1. Vérifiez si le bug est déjà signalé.
+2. Ouvrez une [issue](https://github.com/dj2025-hub/green-cart/issues) avec :
+   - Description détaillée
+   - Étapes pour reproduire
+   - Captures d’écran si pertinentes
+   - Informations sur votre environnement
+
+### ✨ Proposer des fonctionnalités
+1. Ouvrez une [discussion](https://github.com/dj2025-hub/green-cart/discussions).
+2. Décrivez la fonctionnalité souhaitée.
+3. Expliquez son utilité.
+4. Proposez une implémentation si possible.
+
+### 🔧 Contribuer au code
+1. Forkez le repository.
+2. Créez une branche :
+   ```bash
+   git checkout -b feature/ma-nouvelle-fonctionnalite
+   ```
+3. Commitez vos changements :
+   ```bash
+   git commit -m "feat: ajouter nouvelle fonctionnalité"
+   ```
+4. Poussez vers votre branche :
+   ```bash
+   git push origin feature/ma-nouvelle-fonctionnalite
+   ```
+5. Ouvrez une Pull Request.
+
+### 📝 Standards de code
+- Utilisez JavaScript (pas de TypeScript).
+- Suivez les règles ESLint définies dans `eslint.config.js`.
+- Ajoutez des tests pour les nouvelles fonctionnalités.
+- Documentez les fonctions complexes.
+- Utilisez des commits conventionnels.
+
+### 🧪 Tests
+```bash
+npm run test          # Lance les tests
+npm run test:watch    # Tests en mode watch
+npm run test:coverage # Génère un rapport de couverture
+```
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+## 🙏 Remerciements
+
+- **[Vite](https://vitejs.dev/)** : Outil de build rapide et moderne
+- **[shadcn](https://twitter.com/shadcn)** : Composants UI exceptionnels
+- **[Lucide](https://lucide.dev/)** : Icônes SVG optimisées
+- **Communauté open source** : Pour les outils utilisés
+
+## 📞 Contact
+
+- **Email** : sih-tem.delavil-junelle-stercy.edu@groupe-gema.com
+
+---
+
+<div align="center">
+
+**Fait avec 💚 pour un avenir plus durable**
+
+[🌐 Site web](/) • [📱 Demo](/) • [📖 Documentation](/)
+
+</div>
